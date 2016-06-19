@@ -1,3 +1,5 @@
+package com.zjuqsc.database;
+
 import com.zjuqsc.database.Database;
 
 /**
