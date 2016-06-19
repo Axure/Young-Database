@@ -20,7 +20,7 @@ public class FourKBlockBuffer extends BlockBuffer {
     private int offset;
     private RandomAccessFile file;
 
-    FourKBlockBuffer() {
+    private FourKBlockBuffer() {
         super();
     }
 
