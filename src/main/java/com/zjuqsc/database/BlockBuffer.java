@@ -43,12 +43,20 @@ public abstract class BlockBuffer implements DatabaseBuffer {
 
     @Override
     public abstract int getIndex();
-
+    @Override
+    public abstract int getOffset();
 
     @Override
     public void write(byte datum) {
         bytes[pointer] = datum;
     }
+
+    @Override
+    public void writeAt(int index, byte datum) {
+        bytes[index] = datum;
+    }
+
+
 
 
 

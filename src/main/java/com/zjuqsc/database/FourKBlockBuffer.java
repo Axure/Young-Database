@@ -1,11 +1,14 @@
 package com.zjuqsc.database;
 
+import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.MappedByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 
 /**
@@ -14,6 +17,7 @@ import java.nio.channels.WritableByteChannel;
 public class FourKBlockBuffer extends BlockBuffer {
     protected static final int size = 4096;
     private int index;
+    private int offset;
     private RandomAccessFile file;
 
     FourKBlockBuffer() {
@@ -32,6 +36,7 @@ public class FourKBlockBuffer extends BlockBuffer {
 
         this.file = file;
         this.index = index;
+        this.offset = offset;
 
         FileChannel fileChannel = file.getChannel();
 
@@ -40,14 +45,18 @@ public class FourKBlockBuffer extends BlockBuffer {
         fileChannel.transferTo(offset + size * index, size, outByteChannel);
         bytes = outputStream.toByteArray();
 
-        throw new IndexOutOfBoundsException("The offset is too large!");
+//        throw new IndexOutOfBoundsException("The offset is too large!"); // TODO: when?
 
     }
 
 
     @Override
     public void persist() throws IOException {
-
+        FileChannel fileChannel = file.getChannel();
+        final MappedByteBuffer mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, offset + size * index, size);
+        for (int i = 0; i < size; ++i) {
+            mappedByteBuffer.put(bytes[i]);
+        }
     }
 
     @Override
@@ -58,6 +67,11 @@ public class FourKBlockBuffer extends BlockBuffer {
     @Override
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public int getOffset() {
+        return offset;
     }
 
 

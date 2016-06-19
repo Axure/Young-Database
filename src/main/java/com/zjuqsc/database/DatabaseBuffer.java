@@ -16,4 +16,5 @@ public interface DatabaseBuffer extends Storage {
 
     RandomAccessFile getFile();
     int getIndex();
+    int getOffset();
 }

@@ -5,4 +5,5 @@ package com.zjuqsc.database;
  */
 public interface Storage {
     void write(byte datum);
+    void writeAt(int index, byte datum);
 }

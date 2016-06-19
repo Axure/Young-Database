@@ -3,7 +3,7 @@ package com.zjuqsc.database;
 /**
  * Created by zhenghu on 2016-06-19.
  */
-public class BufferPointer<TBuffer> implements StoragePointer {
+public class BufferPointer<TBuffer extends Storage> implements StoragePointer {
 
     private final TBuffer blockBuffer;
 

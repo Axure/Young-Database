@@ -8,10 +8,10 @@ import com.sun.prism.impl.Disposer;
 public class RecordManager {
 
     public Record deserialize(BufferPointer bufferPointer, Relation relation) {
-
+        return null;
     }
 
-    public IndexRecord deserialize(BufferPointer bufferPointer, Relation) {
-
-    }
+//    public IndexRecord deserialize(BufferPointer bufferPointer, Relation relation) {
+//        return null;
+//    }
 }
