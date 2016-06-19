@@ -1,0 +1,15 @@
+package com.zjuqsc.database;
+
+/**
+ * Created by zhenghu on 2016-06-19.
+ */
+public class DatabaseBufferManager implements BufferManager {
+
+    DatabaseBufferManager() {
+
+    }
+
+
+
+}
+

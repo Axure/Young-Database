@@ -1,9 +1,12 @@
 package com.zjuqsc.database;
 
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
 /**
  * Created by zhenghu on 2016-06-19.
  */
-public class BlockBuffer implements DatabaseBuffer {
+public abstract class BlockBuffer implements DatabaseBuffer {
 
     protected static final int size = 4096;
     protected int pointer = 0;
@@ -16,7 +19,7 @@ public class BlockBuffer implements DatabaseBuffer {
     }
 
     @Override
-    public long getSize() {
+    public int getSize() {
         return size;
     }
 
@@ -29,6 +32,17 @@ public class BlockBuffer implements DatabaseBuffer {
     public void proceed() {
         pointer += 1;
     }
+
+    @Override
+    public void persist() throws IOException {
+
+    }
+
+    @Override
+    public abstract RandomAccessFile getFile();
+
+    @Override
+    public abstract int getIndex();
 
 
     @Override

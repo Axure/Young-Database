@@ -10,4 +10,8 @@ public class RecordManager {
     public Record deserialize(BufferPointer bufferPointer, Relation relation) {
 
     }
+
+    public IndexRecord deserialize(BufferPointer bufferPointer, Relation) {
+
+    }
 }
