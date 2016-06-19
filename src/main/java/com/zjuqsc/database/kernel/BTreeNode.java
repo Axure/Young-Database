@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class BTreeNode<T extends Comparable<T>> {
     private ArrayList<T> contents_;
-//    public BTreeNode(T ) {
+//    public BplusTreeNode(T ) {
 //
 //    }
 
