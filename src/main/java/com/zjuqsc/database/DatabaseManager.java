@@ -15,4 +15,8 @@ public class DatabaseManager {
         Database database = new Database(name);
 
     }
+
+    public void loadDatabase(String name) {
+
+    }
 }

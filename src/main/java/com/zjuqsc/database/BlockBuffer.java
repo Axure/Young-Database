@@ -12,7 +12,10 @@ public abstract class BlockBuffer implements DatabaseBuffer {
     protected int pointer = 0;
     protected byte[] bytes;
 
-
+    @Override
+    public byte[] getBytes() {
+        return bytes;
+    }
 
     public BlockBuffer() {
         this.bytes = new byte[size];

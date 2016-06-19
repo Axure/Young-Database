@@ -1,6 +1,8 @@
 package com.zjuqsc.database;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.file.Path;
 
 /**
  * Created by zhenghu on 2016-06-19.
@@ -21,6 +23,16 @@ public class DatabaseBufferManager extends DatabaseBufferManagerImpl<FourKBlockB
     public int loadBuffer(FilePointer filePointer) throws IOException {
 //        pointer++;
         return loadBuffer(new FourKBlockBuffer(filePointer));
+    }
+
+    public int loadBuffer(RandomAccessFile file) throws IOException {
+//        pointer++;
+        return loadBuffer(new FourKBlockBuffer(file, 0));
+    }
+
+    public int loadAndLockBuffer(RandomAccessFile file) throws IOException {
+//        pointer++;
+        return loadAndLockBuffer(new FourKBlockBuffer(file, 0));
     }
 }
 

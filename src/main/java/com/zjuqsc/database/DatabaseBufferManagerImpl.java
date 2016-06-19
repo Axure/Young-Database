@@ -1,5 +1,6 @@
 package com.zjuqsc.database;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -116,8 +117,25 @@ public class DatabaseBufferManagerImpl<T extends BlockBuffer> implements BufferM
         return value;
     }
 
-    public int loadBuffer(T buffer) {
+    /**
+     * Load.
+     * @param buffer
+     * @return
+     */
+    protected int loadBuffer(T buffer) {
         int handle = getAvailableHandle();
+        put(handle, buffer);
+        return handle;
+    }
+
+    /**
+     * Load and lock the handle.
+     * @param buffer
+     * @return
+     */
+    protected int loadAndLockBuffer(T buffer) {
+        int handle = getAvailableHandle();
+        lock(handle);
         put(handle, buffer);
         return handle;
     }

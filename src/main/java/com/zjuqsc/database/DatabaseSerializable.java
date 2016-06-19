@@ -11,7 +11,7 @@ public interface DatabaseSerializable {
     Future<byte[]> serializeTo(byte[] byteBuffer);
 
 
-    Future<byte[]> deserializeOutOf(byte[] byteBuffer);
+    Future<Boolean> deserializeOutOf(byte[] byteBuffer);
 
 
 }

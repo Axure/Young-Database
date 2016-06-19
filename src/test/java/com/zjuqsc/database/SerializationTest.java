@@ -10,7 +10,7 @@ import java.util.concurrent.Future;
  */
 public class SerializationTest extends TestCase {
 
-    @Test
+
     public void testDatabaseSerialization() {
         Database database = new Database("Haha");
         byte[] bytes = new byte[100];

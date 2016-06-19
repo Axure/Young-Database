@@ -10,9 +10,9 @@ public abstract class AbstractDatabaseSerializable implements DatabaseSerializab
     public abstract Future<byte[]> serializeTo(byte[] byteBuffer);
 
 
-    public abstract Future<byte[]> deserializeOutOf(byte[] byteBuffer);
+    public abstract Future<Boolean> deserializeOutOf(byte[] byteBuffer);
 
-    public Future<byte[]> deserializeFrom(BufferPointer bufferPointer) {
+    public Future<Boolean> deserializeFrom(BufferPointer bufferPointer) {
         return deserializeOutOf(null);
     }
 
